@@ -1,0 +1,82 @@
+﻿.card-header {
+  background-color: #1a237e !important;
+  border-bottom: none;
+  padding: 1.25rem;
+  z-index: 10;
+}
+.card-header h5 { font-weight: 800; color: #ffffff; margin: 0; }
+
+.chat-box {
+  height: 500px;
+  overflow-y: auto; /* 내용 많아지면 스크롤 */
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chat-box::-webkit-scrollbar { width: 6px; }
+.chat-box::-webkit-scrollbar-track { background: transparent; }
+.chat-box::-webkit-scrollbar-thumb { background: #d1d9e6; border-radius: 10px; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message {
+  display: flex;
+  animation: fadeInUp 0.3s ease-out forwards; /* 애니메이션 적용 */
+}
+        
+.message.assistant .message-content {
+  background-color: #f1f3f5;
+  color: #495057;
+  border-radius: 18px 18px 18px 4px;
+  border: 1px solid #e9ecef;
+}
+
+.message.user { justify-content: flex-end; }
+.message.user .message-content {
+  background-color: #e7f3ff;
+  color: #0c63e4;
+  border-radius: 18px 18px 4px 18px;
+  border: 1px solid #d1e7ff;
+}
+
+.message-content {
+  max-width: 80%;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  word-wrap: break-all;
+  white-space: pre-wrap
+}
+.message-content p, 
+.message-content div {
+  margin: 0 !important;
+}
+
+.card-footer { background-color: #ffffff; border-top: 1px solid #f1f3f5; padding: 1rem; }
+.form-control { border-radius: 7px; background-color: #f8f9fa; }
+.form-control:focus{ box-shadow: none; }
+.btn-send { 
+  font-size: 1rem;
+  color: #333333;
+  background-color: color-mix(in srgb, #ffffff, transparent 50%);
+  border: 1px solid;
+  border-color: color-mix(in srgb, #333333, transparent 80%);
+  padding: .385rem .75rem;
+  transition: 0.4s;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.btn-send:hover,
+.btn-send:focus {
+  outline: none;	
+  background-color: color-mix(in srgb, #ffffff, transparent 50%);
+  border-color: #106eea;
+}

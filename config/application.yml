@@ -1,0 +1,43 @@
+server:
+  port: 9091
+  tomcat:
+    max-part-count: 100
+  servlet:
+    session:
+      tracking-modes: cookie
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false    # thymeleaf에 대한 캐시를 남기지 않는다. 운영시에는 true.
+
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5432/mydb
+    username: blue
+    password: java$!
+
+  ai:
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+        chat:
+          options:
+            model: gemini-2.5-flash
+
+        embedding:
+          text:
+            options:
+              model: "models/gemini-embedding-001"
+              dimensions: 768
+          project-id: "hotel-vector-dev-01"
+          api-key: ${GEMINI_API_KEY}
+          location: "us-central1"
+
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 768  # Google 임베딩은 768 차원
+        table-name: tripan_vector
+        initialize-schema: true
